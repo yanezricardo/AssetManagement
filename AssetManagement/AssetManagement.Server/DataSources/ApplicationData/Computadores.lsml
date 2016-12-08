@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="Computador">
+    <EntityType.Attributes>
+      <CreatedModifiedPropertiesEnabled />
+    </EntityType.Attributes>
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="CodigoDeInventario"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="10" />
+          <DisplayName
+            Value="Código" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Serial"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="20" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Modelo"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Marca"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Fabricante"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Nombre"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="100" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="IP"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="20" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="SistemaOperativo"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="15" />
+          <SupportedValue
+            DisplayName="Windows"
+            Value="Windows" />
+          <SupportedValue
+            DisplayName="Mac OS"
+            Value="MacOS" />
+          <SupportedValue
+            DisplayName="Linux"
+            Value="Linux" />
+          <SupportedValue
+            DisplayName="Otro"
+            Value="Otro" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Arquitectura"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="15" />
+          <SupportedValue
+            DisplayName="Intel 32bit"
+            Value="Intel32" />
+          <SupportedValue
+            DisplayName="Intel 64bit"
+            Value="Intel64" />
+          <SupportedValue
+            DisplayName="AMD 32bit"
+            Value="AMD32" />
+          <SupportedValue
+            DisplayName="AMD 64bit"
+            Value="AMD64" />
+          <SupportedValue
+            DisplayName="ARM"
+            Value="ARM" />
+          <SupportedValue
+            DisplayName="Otra"
+            Value="Otra" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Tipo"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="15" />
+          <SupportedValue
+            DisplayName="Desktop"
+            Value="Desktop" />
+          <SupportedValue
+            DisplayName="Laptop"
+            Value="Laptop" />
+          <SupportedValue
+            DisplayName="Tablet"
+            Value="Tablet" />
+          <SupportedValue
+            DisplayName="Otro"
+            Value="Otro" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Usuario"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="20" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Notas"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="Perifericos"
+        Association="Periferico_Computador"
+        FromEnd="Computador"
+        ToEnd="Periferico">
+        <NavigationProperty.Attributes>
+          <DisplayName
+            Value="Perifericos" />
+        </NavigationProperty.Attributes>
+      </NavigationProperty>
+      <NavigationProperty
+        Name="LicenciaRegistradas"
+        Association="LicenciaRegistrada_Computador"
+        FromEnd="Computador"
+        ToEnd="LicenciaRegistrada" />
+      <NavigationProperty
+        Name="Casos"
+        Association="Caso_Computador"
+        FromEnd="Computador"
+        ToEnd="Caso" />
+      <EntityProperty
+        Name="CreatedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Created"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ModifiedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Modified"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <UseForConcurrency />
+          <Generated />
+          <Hidden />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <EntityContainer
+    Name="ApplicationData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="Computadores"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="Computador" />
+    <QueryOperation
+      Name="Computadores_Single"
+      ReturnType="Computador">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Computadores" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="Computadores_SingleOrDefault"
+      ReturnType="Computador">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Computadores" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="Periferico_Computadors"
+      Association="Periferico_Computador">
+      <AssociationSetEnd
+        Name="Periferico"
+        EntitySet="Perifericos" />
+      <AssociationSetEnd
+        Name="Computador"
+        EntitySet="Computadores" />
+    </AssociationSet>
+    <AssociationSet
+      Name="LicenciaRegistrada_Computadors"
+      Association="LicenciaRegistrada_Computador">
+      <AssociationSetEnd
+        Name="LicenciaRegistrada"
+        EntitySet="LicenciaRegistradas" />
+      <AssociationSetEnd
+        Name="Computador"
+        EntitySet="Computadores" />
+    </AssociationSet>
+    <AssociationSet
+      Name="Caso_Computadors"
+      Association="Caso_Computador">
+      <AssociationSetEnd
+        Name="Caso"
+        EntitySet="Casos" />
+      <AssociationSetEnd
+        Name="Computador"
+        EntitySet="Computadores" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association
+    Name="Periferico_Computador">
+    <AssociationEnd
+      Name="Periferico"
+      Multiplicity="Many"
+      EntityType="Periferico" />
+    <AssociationEnd
+      Name="Computador"
+      Multiplicity="One"
+      EntityType="Computador">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <DataService
+    Name="ApplicationDataMapping">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <AssociationSetMapping
+      AssociationSet="Periferico_Computadors">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="Periferico_Computadors" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[Periferico_Computadors]/Members[Periferico]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Periferico_Computador" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[Periferico_Computadors]/Members[Computador]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="LicenciaRegistrada_Computadors">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="LicenciaRegistrada_Computadors" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[LicenciaRegistrada_Computadors]/Members[LicenciaRegistrada]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="LicenciaRegistrada_Computador" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[LicenciaRegistrada_Computadors]/Members[Computador]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="Caso_Computadors">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="Caso_Computadors" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[Caso_Computadors]/Members[Caso]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Caso_Computador" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[Caso_Computadors]/Members[Computador]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+  <Association
+    Name="LicenciaRegistrada_Computador">
+    <AssociationEnd
+      Name="LicenciaRegistrada"
+      Multiplicity="Many"
+      EntityType="LicenciaRegistrada" />
+    <AssociationEnd
+      Name="Computador"
+      Multiplicity="One"
+      EntityType="Computador">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Cascade" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="Caso_Computador">
+    <AssociationEnd
+      Name="Caso"
+      Multiplicity="Many"
+      EntityType="Caso" />
+    <AssociationEnd
+      Name="Computador"
+      Multiplicity="One"
+      EntityType="Computador">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+</ServiceApplication>

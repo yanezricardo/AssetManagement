@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="Licencia">
+    <EntityType.Attributes>
+      <CreatedModifiedPropertiesEnabled />
+    </EntityType.Attributes>
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="Key"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="50" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Tipo"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="50" />
+          <SupportedValue
+            DisplayName="No aplicable"
+            Value="NoAplicable" />
+          <SupportedValue
+            DisplayName="Venta directa"
+            Value="VentaDirecta" />
+          <SupportedValue
+            DisplayName="Activación múltiple"
+            Value="ActivacionMultiple" />
+          <SupportedValue
+            DisplayName="Clave de activación estática"
+            Value="ClaveDeActivacionEstatica" />
+          <SupportedValue
+            DisplayName="Clave personalizada"
+            Value="ClavePersonalizada" />
+          <SupportedValue
+            DisplayName="VA 1.0"
+            Value="VA1_0" />
+          <SupportedValue
+            DisplayName="Clave OEM"
+            Value="ClaveOEM" />
+          <SupportedValue
+            DisplayName="Clave minorista AA"
+            Value="ClaveMinoristaAA" />
+          <SupportedValue
+            DisplayName="Clave AA Lab"
+            Value="ClaveAALab" />
+          <SupportedValue
+            DisplayName="Clave AA MAK"
+            Value="ClaveAAMAK" />
+          <SupportedValue
+            DisplayName="AA VA 1.0"
+            Value="AAVA1_0" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Autorizadas"
+        PropertyType=":Int32">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+          <Required />
+          <Range
+            Minimum="1" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Usadas"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Disponibles"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <Computed />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="Software"
+        Association="Licencia_Software"
+        FromEnd="Licencia"
+        ToEnd="Software" />
+      <NavigationProperty
+        Name="Proveedor"
+        Association="Licencia_Proveedor"
+        FromEnd="Licencia"
+        ToEnd="Proveedor" />
+      <EntityProperty
+        Name="FechaDeAdquisicion"
+        PropertyType=":Date">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+          <DisplayName
+            Value="Fecha de Adquisición" />
+          <StringValueFormat
+            Value="dd/MM/yyyy" />
+          <Range
+            Maximum="01/01/2079"
+            Minimum="01/01/2000" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="LicenciaRegistradas"
+        Association="LicenciaRegistrada_Licencia"
+        FromEnd="Licencia"
+        ToEnd="LicenciaRegistrada" />
+      <EntityProperty
+        Name="CreatedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Created"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="ModifiedBy"
+        IsReadOnly="True"
+        PropertyType=":Person?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Modified"
+        IsReadOnly="True"
+        PropertyType=":DateTimeOffset?">
+        <EntityProperty.Attributes>
+          <Generated />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <UseForConcurrency />
+          <Generated />
+          <Hidden />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <EntityContainer
+    Name="ApplicationData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="Licencias"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="Licencia" />
+    <QueryOperation
+      Name="Licencias_Single"
+      ReturnType="Licencia">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Licencias" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="Licencias_SingleOrDefault"
+      ReturnType="Licencia">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Licencias" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="LicenciaRegistrada_Licencias"
+      Association="LicenciaRegistrada_Licencia">
+      <AssociationSetEnd
+        Name="LicenciaRegistrada"
+        EntitySet="LicenciaRegistradas" />
+      <AssociationSetEnd
+        Name="Licencia"
+        EntitySet="Licencias" />
+    </AssociationSet>
+  </EntityContainer>
+  <DataService
+    Name="ApplicationDataMapping">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="Licencias">
+      <EntitySetMapping.Attributes>
+        <SsdlForeignKeyProperty
+          Name="Liciencia_Software"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="Licencia_Proveedor"
+          Nullable="False"
+          Type="int" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="LicenciaRegistrada_Licencias">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="LicenciaRegistrada_Licencias" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[LicenciaRegistrada_Licencias]/Members[LicenciaRegistrada]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="LicenciaRegistrada_Licencia" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[LicenciaRegistrada_Licencias]/Members[Licencia]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+  <Association
+    Name="LicenciaRegistrada_Licencia">
+    <AssociationEnd
+      Name="LicenciaRegistrada"
+      Multiplicity="Many"
+      EntityType="LicenciaRegistrada" />
+    <AssociationEnd
+      Name="Licencia"
+      Multiplicity="One"
+      EntityType="Licencia">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+</ServiceApplication>
